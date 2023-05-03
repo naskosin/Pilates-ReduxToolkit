@@ -1,0 +1,15 @@
+ul{
+    text-align: center;
+    list-style-type: none;
+    flex-wrap: wrap;
+    margin:  50px auto;
+    display: flex;
+    align-items: center;
+  justify-content: center;
+    gap: 70px
+}
+header{
+    background-color: black;
+    color: white;
+    padding:15px;
+}
