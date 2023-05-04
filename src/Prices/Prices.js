@@ -1,10 +1,13 @@
 export const Prices = () =>{
     return (
-        <ul>
-            <li>Trainings</li>
-            <li>Prices</li>
-            <li>Exercises</li>
-
-        </ul>
+        <table>
+            <tr>Trainings
+                <td>One hour</td>
+                <td>One day</td>
+                <td>One week</td>
+            </tr>
+            <tr>Trainings</tr>
+            <tr>Trainings</tr>
+        </table>
     )
 }

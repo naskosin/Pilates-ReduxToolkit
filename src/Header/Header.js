@@ -9,8 +9,8 @@ export const Header = () => {
       <li>
         <Link to="/trainings">Trainings</Link>
       </li>
-      <li>Prices</li>
-      <li>Exercises</li>
+      <li><Link to="/prices">Prices</Link></li>
+      <li><Link to="/exercises">Exercises</Link></li>
       <li>
         <Link to="/login">LogIn</Link>
       </li>
@@ -21,8 +21,8 @@ export const Header = () => {
       <li>
         <Link to="/trainings">Trainings</Link>
       </li>
-      <li>Prices</li>
-      <li>Exercises</li>
+      <li><Link to="/prices">Prices</Link></li>
+      <li><Link to="/exercises">Exercises</Link></li>
       
     </ul>
   );
