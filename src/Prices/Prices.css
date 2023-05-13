@@ -1,0 +1,18 @@
+table{
+    border: solid 2px black;
+    margin: 100px auto;
+    border-collapse: collapse;
+    font-size: xx-large;
+    
+
+}
+td{
+    border: solid 1px black;
+    padding: 30px;
+
+}
+tr{
+    border: solid 1px black;
+    padding: 30px;
+
+}

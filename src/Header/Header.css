@@ -1,22 +1,65 @@
-ul{
-    text-align: center;
-    list-style-type: none;
-    flex-wrap: wrap;
-    margin:  50px auto;
-    display: flex;
-    align-items: center;
+ul {
+  text-align: center;
+  list-style-type: none;
+  flex-wrap: wrap;
+  margin: 20px 0px;
+  display: flex;
+  align-items: center;
   justify-content: center;
-    gap: 70px
+  gap: 70px;
+  padding: 15px;
 }
-header{
-    background-color: black;
-    color: white;
-    padding:15px;
+header {
+  background-color: black;
+  color: white;
+  padding: 20px;
+  text-align: right;
 }
-a{
-    text-decoration: none;
-    font-size: 1.5rem;
-    padding: 15px;
-    color:blanchedalmond;
-    font-weight: bolder;
+a {
+  text-decoration: none;
+  font-size: 1.5rem;
+  padding: 15px;
+  color: blanchedalmond;
+  font-weight: bolder;
+}
+.LogIn {
+  color: crimson;
+}
+.HeaderButton {
+  display: inline-block;
+  position: absolute;
+  top: 20px;
+  right: 150px;
+  padding: 5px 35px;
+  color: wheat;
+  background-color: crimson;
+  border-radius: 15px;
+}
+.HeaderGreeting {
+  position: absolute;
+  top: -15px;
+  right: 25px;
+
+  display: inline-block;
+  padding: 5px 35px;
+  color: wheat;
+  /* background-color: crimson; */
+  border-radius: 15px;
+}
+i{
+    color: azure;
+    font-size: xx-large;
+}
+span{
+    background-color: crimson;
+    color:black;
+    border-radius: 5px;
+    position:relative;
+    right: 15px;
+    top: -15px;
+    padding: 1px 3px
+}
+.time{
+   margin:0;
+    text-align: left;
 }

@@ -1,0 +1,14 @@
+.HomeSection{
+    margin: 0px auto;
+    background-color: black;
+    opacity: 1;
+    z-index: 0;
+    height: 100vh;
+    padding:50px
+
+}
+.HomeArticle{
+    background-color: black;
+    opacity: 1;
+    z-index: 5;
+}

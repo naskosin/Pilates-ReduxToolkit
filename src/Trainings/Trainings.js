@@ -1,5 +1,14 @@
+import { createNextState } from "@reduxjs/toolkit";
+
 import "./Trainings.css";
 export const Trainings = () => {
+
+
+
+
+
+
+
   return (
     <article>
       <h3>What is Pilates?</h3>

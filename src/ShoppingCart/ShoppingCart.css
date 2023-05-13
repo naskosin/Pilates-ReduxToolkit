@@ -1,0 +1,19 @@
+.ShoppingCartArticle{
+    width: 50%;
+    background-color: grey;
+    margin: 100px auto;
+
+}
+
+.ShoppingCartArticleImg{
+    height: auto;
+    width: 50%;
+    display: inline-block;
+
+}
+.ShoppingCartArticleDescription{
+    display: inline-block;
+    width: 50%;
+    vertical-align: top;
+    font-size: xx-large;
+}

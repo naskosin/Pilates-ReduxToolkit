@@ -1,9 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
-import { logInAction, logOut, store } from "../store";
 import { authActions } from "../store";
 import { logIn } from "../authService";
 import { useNavigate } from "react-router-dom";
-
+import './Login.css'
 export const Login = ()=>{
  const   navigate = useNavigate()
 const dispatch = useDispatch();
@@ -14,21 +13,30 @@ const loginSubmithandler =(e)=>{
     const form = new FormData(e.target);
     const email = form.get('user');
     const password = form.get('password');
+    console.log('user')
+
     logIn(email, password)
-    .then(result=>{ dispatch(authActions.logInHandler(result));
-    navigate('/trainings')})
+    .then(result=>{ 
+        console.log('in')
+        dispatch(authActions.logInHandler(result));
+        navigate('/trainings')}).catch((err)=>
+        {console.log(err)
+            dispatch(authActions.logErrorhandler(err));
+        })
+  
+    
 }
 return(
-<>
-<form onSubmit={loginSubmithandler}>
+
+<form className="LoginForm"   onSubmit={loginSubmithandler}>
 <label htmlFor="user">User</label>
 <input id = 'user' name= 'user'/>
 <label htmlFor="password">Password</label>
 <input type='password' name= 'password'/>
 <button type="submit">Submit</button>
 </form>
-<button onClick={()=>dispatch(authActions.logOutHandler())}>LogOut</button>
-{email ? <p>Hi, {email.user}</p> : ''}
-</>
+
+
+
 )
 }

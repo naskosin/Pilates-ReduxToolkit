@@ -1,5 +1,5 @@
 
-import {  configureStore , createSlice} from "@reduxjs/toolkit";
+import {  configureStore , createSlice, getDefaultMiddleware} from "@reduxjs/toolkit";
 
 const initialState = {user: localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : {email: "", accessToken: ""} };
 
@@ -27,6 +27,7 @@ export const logOut = () => {
 };
 
 
+
 const authSlice = createSlice({
   name: "Authentication",
   initialState : {user: localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : {email: "", accessToken: ""} },
@@ -36,10 +37,26 @@ const authSlice = createSlice({
       state.user=action.payload
     },
     logOutHandler(state){
-     state.user = {email: "", accessToken: ""}
+     state.user = {email: "", accessToken: ""};
+     localStorage.setItem('user', JSON.stringify({email: "", accessToken: ""}));
+     console.log(localStorage.getItem("user"))
+     //localStorage.clear('user');
+    },
+    logErrorhandler(state,action){
+      alert(action.payload)
     }
   },
   
 });
 export const authActions = authSlice.actions;
-export const store = configureStore({reducer: authSlice.reducer});
+const middleWareMine =  (store)=>(next)=>(action)=>{
+  console.log('This is action', action);
+  console.log(action.payload)
+
+ 
+  next(action)
+}
+export const store = configureStore({reducer: authSlice.reducer, 
+ middleware: (getDefaultMiddleware)=>getDefaultMiddleware().concat(middleWareMine)
+  //[...getDefaultMiddleware(),middleWareMine]
+});
