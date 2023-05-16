@@ -38,16 +38,23 @@ const authSlice = createSlice({
     },
     logOutHandler(state){
      state.user = {email: "", accessToken: ""};
-     localStorage.setItem('user', JSON.stringify({email: "", accessToken: ""}));
+     localStorage.removeItem('user');
      console.log(localStorage.getItem("user"))
      //localStorage.clear('user');
     },
     logErrorhandler(state,action){
       alert(action.payload)
     }
-  },
-  
+  }, 
 });
+
+const productSlice = createSlice({
+  name: "Product",
+  initialState: [],
+  reducers: {
+
+  }
+})
 export const authActions = authSlice.actions;
 const middleWareMine =  (store)=>(next)=>(action)=>{
   console.log('This is action', action);

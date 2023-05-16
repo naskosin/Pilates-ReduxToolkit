@@ -28,9 +28,9 @@ export const Prices = () => {
         return
       }
      
-      console.log(count.some(x=>x.name===choice.name))
+      
 
-    setCount((prevState) => [...prevState, product]);
+    setCount((prevState) => [...prevState, choice]);
     //setAmount((prevState) => [...prevState, sizes]);
    
   };
@@ -55,7 +55,7 @@ export const Prices = () => {
               This package include not so many techniques and methods for
               training.
             </p>
-            <button onClick={addProduct}>Add to cart.</button>
+            <button onClick={()=>addProduct(product2)}>Add to cart.</button>
           </td>
         </tr>
       </tbody>

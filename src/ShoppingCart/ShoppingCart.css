@@ -1,7 +1,9 @@
 .ShoppingCartSection{
     background-color: black;
     width: 80%;
-    min-height: 600px;
+    min-height: 400px;
+    margin: 50px 0px;padding-top: 30px;
+ 
 }
 .ShoppingCartSectionSpan{
     background-color: azure;
@@ -9,8 +11,26 @@
     text-align: right;
 }
 
-.ShoppingCartSectionParagraph{
-   
-    font-size: xx-large;
-    text-align: right;
+
+
+.ShoppingCartSectionParagraph span{
+    background-color: 
+    crimson;
+    padding: 5px;
+    color: black;
+    border-radius: 10px;
+
 }
+.Empty{
+    padding: 50px;
+    font-size: xx-large;
+}
+.ShoppingCartSectionParagraph{
+    margin: 20px;
+     font-size: xx-large;
+     text-align: right;
+     background-color: black;
+     display: block;
+     color: azure;
+ 
+ }

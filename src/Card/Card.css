@@ -2,30 +2,45 @@
     width: 80%;
     background-color: grey;
     text-align: left;
+    margin: 5px;
+    height: 300px;
 
 }
 
 .ShoppingCartArticleImg{
-    height: auto;
-    width: 50%;
-    display: inline-block;
+   display: block;
+    object-fit: cover;
+    height:100%;
+    width: 100%;
+  
 
 }
 .ShoppingCartArticleDescription{
     display: inline-block;
-    width: 45%;
+    width: 48%;
+    height: 280px;
     vertical-align: top;
     font-size: x-large;
-    margin: 2px;
+    padding: 10px;
     text-align: right;
     background-color: antiquewhite;
 
 }
 .ShoppingCartSpan{
-    background-color: rgb(247, 239, 240);
+    background-color:     crimson;
+    ;
     color:black;
     border-radius: 5px;
     text-align: right;
 
     padding: 1px 3px
+}
+.Picture{
+
+height: 300px;
+    width: 50%;
+    display: inline-block;
+}
+select{ 
+    font-size: large;
 }
