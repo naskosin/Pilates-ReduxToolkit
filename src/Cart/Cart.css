@@ -2,7 +2,7 @@ i{
     color: azure;
     font-size: xx-large;
 }
-span{
+.CartSpan{
     background-color: crimson;
     color:black;
     border-radius: 5px;

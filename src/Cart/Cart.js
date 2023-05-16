@@ -4,11 +4,16 @@ import './Cart.css'
 export const Cart = () =>{
     const {count, setCount} = useCountContext();
 
-    const array = [1,2,3];
+    const array = [{
+        name: "One hour",
+        price: 100,
+        quantity: 1,
+        picture: "one.jpg",
+      }];
 
-    const total = array.reduce((sum, currentValue)=>{return sum+currentValue});
     
+   
     return(<div> <i className="fa-solid fa-cart-shopping"></i>
-    <span type='badge'>{count.length}</span>
+    <span className='CartSpan' type='badge'>{count.length!=0? count.reduce((sum, currentValue)=> sum+currentValue.quantity,0)  : 0}</span>
    </div>)
 }

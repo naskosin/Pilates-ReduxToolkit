@@ -1,19 +1,16 @@
-.ShoppingCartArticle{
-    width: 50%;
-    background-color: grey;
-    margin: 100px auto;
-
+.ShoppingCartSection{
+    background-color: black;
+    width: 80%;
+    min-height: 600px;
 }
-
-.ShoppingCartArticleImg{
-    height: auto;
-    width: 50%;
-    display: inline-block;
-
-}
-.ShoppingCartArticleDescription{
-    display: inline-block;
-    width: 50%;
-    vertical-align: top;
+.ShoppingCartSectionSpan{
+    background-color: azure;
     font-size: xx-large;
+    text-align: right;
+}
+
+.ShoppingCartSectionParagraph{
+   
+    font-size: xx-large;
+    text-align: right;
 }

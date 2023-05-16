@@ -2,6 +2,14 @@ import YouTube from 'react-youtube'
 import './Exercises.css'
 
 export const Exercises = () =>{
+    const array = [1,2,3,4,4];
+    const newArray = array.reduce((acc, el)=>{
+        if(!acc.includes(el)){
+            acc.push(el)
+        }
+        return acc
+    }, [])
+    console.log(newArray)
     return(
     <section className='Exercises'>
 <article className='ExercisesExercise'  ><YouTube videoId={'DXsYbCuouo4'}/>30 MIN Full Body Pilates HIIT WORKOUT</article>

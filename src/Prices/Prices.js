@@ -1,36 +1,64 @@
-import { useState } from 'react';
-import './Prices.css';
-import { useCountContext } from '../context';
-export const Prices = () =>{
-
-const{count, setCount}=useCountContext();
-const product = {
-    name: 'One hour',
+import { useState } from "react";
+import "./Prices.css";
+import { useCountContext } from "../context";
+export const Prices = () => {
+  const { count, setCount, setAmount } = useCountContext();
+  const product = {
+    name: "One hour",
     price: 100,
-    quantity: 50,
-    picture:'one.jpg'
-}
-const addProduct = () =>{
-setCount((prevState)=>
-[...prevState, product]
-)
-console.log(count)
-}
-    return (
+    quantity: 1,
+    picture: "one.jpg",
+  };
+  const product2 = {
+    name: "One week",
+    price: 200,
+    quantity: 1,
+    picture: "two.jpg",
+  };
 
-        <table>
-            <tbody>
-            <tr>
-                <td>One hour</td>
-                <td><p>This package include not so many techniques and methods for training.</p><button onClick={addProduct}>Add to cart.</button></td>
-                
-            </tr>
-            <tr>
-                <td>One day</td>
-                <td><p>This package include not so many techniques and methods for training.</p><button onClick={addProduct}>Add to cart.</button>            
-</td></tr>
-      
-            </tbody>
-        </table>
-    )
-}
+  const productsum = { summary: product.price, name: product.name };
+  const productsum2 = { summary: product2.price, name: product2.name };
+
+  const addProduct = (choice) => {
+      //console.log(choice)
+      if(count.some(x=>x.name===choice.name)){
+          
+        let newArray = count.map((x)=>{ return choice.name===x.name ? {...x, quantity: x.quantity + choice.quantity } :x})
+        setCount(newArray)
+        return
+      }
+     
+      console.log(count.some(x=>x.name===choice.name))
+
+    setCount((prevState) => [...prevState, product]);
+    //setAmount((prevState) => [...prevState, sizes]);
+   
+  };
+ 
+  return (
+    <table>
+      <tbody>
+        <tr>
+          <td>One hour</td>
+          <td>
+            <p>
+              This package include not so many techniques and methods for
+              training.
+            </p>
+            <button onClick={()=>addProduct(product)}>Add to cart.</button>
+          </td>
+        </tr>
+        <tr>
+          <td>One day</td>
+          <td>
+            <p>
+              This package include not so many techniques and methods for
+              training.
+            </p>
+            <button onClick={addProduct}>Add to cart.</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  );
+};
