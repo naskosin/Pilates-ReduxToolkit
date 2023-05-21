@@ -6,7 +6,7 @@ import './Login.css'
 export const Login = ()=>{
  const   navigate = useNavigate()
 const dispatch = useDispatch();
-const email = useSelector((state)=>{return state.user});
+const email = useSelector((state)=>{return state.auth});
 console.log(email)
 const loginSubmithandler =(e)=>{
     e.preventDefault();

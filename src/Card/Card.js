@@ -1,5 +1,7 @@
 import './Card.css'
 import { useCountContext } from "../context";
+import { useDispatch, useSelector } from "react-redux";
+import { productActions } from "../store";
 
 import { useEffect, useRef, useState } from "react";
 
@@ -8,9 +10,10 @@ export const Card = ({counts})=>{
    
     const {count,amount, setCount} = useCountContext();
     //console.log(amount)
-    
     const [sum, setSum] = useState(counts.price*selection.current);
-    
+    const basket = useSelector(state=>state.product)
+    const dispatch = useDispatch();
+
 
     //totalHandler({name:sum})
     
@@ -29,12 +32,11 @@ export const Card = ({counts})=>{
         onChange={()=>{
             let newSum= selection.current.value*counts.price;
             setSum(newSum);
-            //let newArray =amount.filter((x)=>(x.name!==counts.name))
-            //let newAmount = amount.find((x)=>(x.name===counts.name));
-            //newAmount.summary = newSum;
-            //newArray.push( newAmount)
-            //setAmount(newArray)
-            let newArray = count.map((x)=>{ return counts.name===x.name ? {...x, quantity: Number(selection.current.value)} :x})
+            
+            let newArray = count.map((x)=>{ return counts.name===x.name ? {...x, quantity: Number(selection.current.value)} :x});
+            let newArrayBasket = basket.map((x)=>{ return counts.name===x.name ? {...x, quantity: Number(selection.current.value)} :x});
+           dispatch(productActions.changeCount(newArrayBasket))
+
             setCount(newArray)
 
         }

@@ -1,27 +1,29 @@
 import { useCountContext } from "../context";
 import { useEffect, useRef, useState } from "react";
+import { productActions } from "../store";
 import { Card } from "../Card/Card";
 import "./ShoppingCart.css";
+import { useDispatch, useSelector } from "react-redux";
 
 export const ShoppingCart = () => {
   //useEffect=(()=>{
   //    //setSum(count[0].price)
   //})
 
-  const { count, amount, setAmount } = useCountContext();
-  console.log(amount);
-
+ // const { count, amount, setAmount } = useCountContext();
+  const basket = useSelector(state=>state.product)
+const dispatch = useDispatch();
   return (
     <section className="ShoppingCartSection">
-      {count.length !== 0 ? (
+      {basket.length !== 0 ? (
         <>
-          {count.map((x, index) => (
+          {basket.map((x, index) => (
             <Card counts={x} key={index} />
           ))}
           <p style={{textAlign: 'right'}} className="ShoppingCartSectionParagraph">
+            <button className="ShoppingCartSectionButton" onClick={()=>(dispatch(productActions.emptyCart()))}>Empty Cart</button>
           Total amount: <span className="ShoppingCartSectionSpan">
-              
-              {count.reduce(
+              {basket.reduce(
                 (acc, currentvalue) =>
                   acc + currentvalue.quantity * currentvalue.price,
                 0

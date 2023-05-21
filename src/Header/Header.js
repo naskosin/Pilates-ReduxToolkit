@@ -9,9 +9,10 @@ import "./Header.css";
 export const Header = () => {
   const dispatch = useDispatch();
   const [date, setDate] = useState(new Date());
-  const email = useSelector((state)=>{return state.user});
+  const email = useSelector((state)=>{return state.auth.user});
 
-  const user = useSelector((state) => state.user.user);
+  const user = useSelector((state) => state.auth.user.user);
+  
   useEffect(()=>{
     setInterval(()=>{
       setDate((new Date())) 

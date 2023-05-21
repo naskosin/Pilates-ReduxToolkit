@@ -4,11 +4,25 @@ import "./Trainings.css";
 export const Trainings = () => {
 
 
+let object = {
+  name: 'Nasko',
+  family: 'Ivanov',
+  surname: 'Kostov'
+}
+const mqu = (name)=>{
+  console.log('mqu')
+  console.log(name)
+  //console.log(this.family)
 
+}
+let object1 = {
+  name: 'Ivan',
+  family: 'Sinapov',
+  phone: 998,
+}
+ const nasko = mqu.bind('Ivan');
 
-
-
-
+nasko()
   return (
     <article>
       <h3>What is Pilates?</h3>

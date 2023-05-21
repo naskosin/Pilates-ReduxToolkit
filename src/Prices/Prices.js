@@ -1,8 +1,13 @@
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 import "./Prices.css";
 import { useCountContext } from "../context";
+import { productActions } from "../store";
 export const Prices = () => {
-  const { count, setCount, setAmount } = useCountContext();
+ const dispatch = useDispatch();
+ const basket = useSelector(state=>state.product)
+ 
+  //const { count, setCount, setAmount } = useCountContext();
   const product = {
     name: "One hour",
     price: 100,
@@ -16,24 +21,23 @@ export const Prices = () => {
     picture: "two.jpg",
   };
 
-  const productsum = { summary: product.price, name: product.name };
-  const productsum2 = { summary: product2.price, name: product2.name };
+  
 
-  const addProduct = (choice) => {
-      //console.log(choice)
-      if(count.some(x=>x.name===choice.name)){
-          
-        let newArray = count.map((x)=>{ return choice.name===x.name ? {...x, quantity: x.quantity + choice.quantity } :x})
-        setCount(newArray)
-        return
-      }
+ //const addProduct = (choice) => {
+ //    //console.log(choice)
+ //    if(count.some(x=>x.name===choice.name)){
+ //        
+ //      let newArray = count.map((x)=>{ return choice.name===x.name ? {...x, quantity: x.quantity + choice.quantity } :x})
+ //      setCount(newArray)
+ //      return
+ //    }
      
       
 
-    setCount((prevState) => [...prevState, choice]);
+    //setCount((prevState) => [...prevState, choice]);
     //setAmount((prevState) => [...prevState, sizes]);
    
-  };
+ 
  
   return (
     <table>
@@ -45,17 +49,18 @@ export const Prices = () => {
               This package include not so many techniques and methods for
               training.
             </p>
-            <button onClick={()=>addProduct(product)}>Add to cart.</button>
+            <button onClick={()=>{dispatch(productActions.addThisProduct(product)); console.log(basket)}}>Add to cart.</button>
           </td>
         </tr>
         <tr>
           <td>One day</td>
           <td>
+        
             <p>
               This package include not so many techniques and methods for
               training.
             </p>
-            <button onClick={()=>addProduct(product2)}>Add to cart.</button>
+            <button onClick={()=>{dispatch(productActions.addThisProduct(product2)); console.log(basket)}}>Add to cart.</button>
           </td>
         </tr>
       </tbody>
