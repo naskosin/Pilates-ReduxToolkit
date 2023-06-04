@@ -1,0 +1,17 @@
+.MyExerciseCard{
+    background-color: lightblue;
+    width: 40%;
+    color: black;
+    text-align: center;
+    padding: 20px;
+    margin: 10px 20px; 
+    display: inline-block;
+    border-radius: 30px;
+
+}
+
+.MyExerciseCardDiv{
+
+    text-align: center;
+    
+}

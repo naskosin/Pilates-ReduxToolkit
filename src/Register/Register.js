@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "../store";
-import { logIn } from "../authService";
+import { registerIn } from "../authService";
 import { useNavigate } from "react-router-dom";
 import { MyModal } from "../MyModal/MyModal";
-import "./Login.css";
+import "./Register.css";
 import { useState } from "react";
 
-export const Login = () => {
+export const Register = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
@@ -15,19 +15,20 @@ export const Login = () => {
     return state.auth;
   });
   console.log(email);
-  const loginSubmithandler = (e) => {
+  const registerSubmithandler = (e) => {
     e.preventDefault();
     const form = new FormData(e.target);
-    const username = form.get("user");
+    const username = form.get("username");
+    const email = form.get("email");
     const password = form.get("password");
-    console.log("user");
+    console.log(password, username, email);
     //setShow(true);
 
-    logIn(username, password)
+    registerIn( password, username, email)
       .then((result) => {
         console.log(result);
-        dispatch(authActions.logInHandler(result));
-        navigate("/trainings");
+        //dispatch(authActions.logInHandler(result));
+        //navigate("/trainings");
       })
       .catch((err) => {
         alert(err);
@@ -36,9 +37,11 @@ export const Login = () => {
   };
   return (
     <>
-      <form className="LoginForm" onSubmit={loginSubmithandler}>
+      <form className="LoginForm" onSubmit={registerSubmithandler}>
         <label htmlFor="user">User</label>
-        <input id="user" name="user" />
+        <input id="user" name="username" />
+        <label htmlFor="user">Email</label>
+        <input id="user" name="email" />
         <label htmlFor="password">Password</label>
         <input type="password" name="password" />
         <button type="submit">Submit</button>

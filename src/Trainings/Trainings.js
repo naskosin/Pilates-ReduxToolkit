@@ -1,9 +1,20 @@
 import { createNextState } from "@reduxjs/toolkit";
-
+import {useEffect, useState} from 'react';
 import "./Trainings.css";
+import { Exercise } from "./Exercise/Exercise";
+import { createExercises, exercises } from "../createExercises";
+import { getExercise } from "../createExercises";
 export const Trainings = () => {
+  const [exercise, setExcercise] = useState('');
 
+useEffect(()=>{exercises().then(result=>
+  {
 
+    let res = Object.values(result.results)
+  
+    setExcercise(res);
+})},[])
+//createExercises("Nasko", 15)
 let object = {
   name: 'Nasko',
   family: 'Ivanov',
@@ -21,8 +32,8 @@ let object1 = {
   phone: 998,
 }
  const nasko = mqu.bind('Ivan');
+//getExercise().then((result)=>console.log(result))
 
-nasko()
   return (
     <article>
       <h3>What is Pilates?</h3>
@@ -55,6 +66,7 @@ nasko()
       </p>
 
       <p>When practised regularly, Pilates helps to:</p>
+      {/* {exercise ? exercise.map((x,index)=><Exercise key={x.objectId} exercise={x}/>) : ''} */}
     </article>
   );
 };

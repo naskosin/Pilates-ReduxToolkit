@@ -11,6 +11,9 @@ import {Prices} from './Prices/Prices';
 import {Home} from './Home/Home';
 import {CountContext} from './context'
 import { ShoppingCart } from './ShoppingCart/Shoppingcart';
+import { CreateRegime } from './CreateRegime/CreateRegime';
+import { Register } from './Register/Register';
+import { MyProfile } from './MyProfile/MyProfile';
 
 function App() {
   return (
@@ -19,11 +22,15 @@ function App() {
       <Header/>
     <div className="App">
       <Routes>
+      <Route path='/register' element={<Register/>}/>
      <Route path='/login' element={<Login/>}/>
      <Route path='/' element={<Home/>}/>
     <Route path = '/shoppingcart'  element={<ShoppingCart/>}/>
      <Route path='/trainings' element={<Trainings/>}/>
      <Route path='/exercises' element={<Exercises/>}/>
+     <Route path='/createRegime' element={<CreateRegime/>}/>
+     <Route path='/myProfile' element={<MyProfile/>}/>
+
      <Route path='/prices' element={<Prices/>}/>
 
       
