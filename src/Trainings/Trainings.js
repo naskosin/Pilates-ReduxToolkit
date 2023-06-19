@@ -1,38 +1,63 @@
-import { createNextState } from "@reduxjs/toolkit";
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from "react";
 import "./Trainings.css";
-import { Exercise } from "./Exercise/Exercise";
-import { createExercises, exercises } from "../createExercises";
-import { getExercise } from "../createExercises";
+import { ExerciseCard } from "../ExerciseCard/ExerciseCard";
+import { exercises, updateExercise } from "../createExercises";
+import { Paginate } from "../Pages/Pages";
+import { useSelector } from "react-redux";
+
 export const Trainings = () => {
-  const [exercise, setExcercise] = useState('');
+  const id = useSelector((state) => {
+    return state.auth.user.objectId;
+  });
+  const [exercise, setExcercise] = useState([]);
+  //useEffect(() => {
+  //  exercises().then((result) => {
+  //    const newArray = result.results;
+  //    setExcercise(result.results);
+  //  });
+  //}, []);
+  const likeHandler = (exerciseId) => {
+    let newArray = exercise.map((x) => {
+      if (exerciseId === x.objectId) {
+        if (x.likes.includes(id)) {
+          updateExercise(exerciseId, {
+            likes: x.likes.filter((x) => x !== id),
+          });
+          return { ...x, likes: x.likes.filter((x) => x !== id) };
+        } else {
+          updateExercise(exerciseId, { likes: [...x.likes, id] });
+          return { ...x, likes: [...x.likes, id] };
+        }
+      }
+      return x;
+    });
+    setExcercise(newArray);
+  };
 
-useEffect(()=>{exercises().then(result=>
-  {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(1);
 
-    let res = Object.values(result.results)
-  
-    setExcercise(res);
-})},[])
-//createExercises("Nasko", 15)
-let object = {
-  name: 'Nasko',
-  family: 'Ivanov',
-  surname: 'Kostov'
-}
-const mqu = (name)=>{
-  console.log('mqu')
-  console.log(name)
-  //console.log(this.family)
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = exercise.slice(indexOfFirstPost, indexOfLastPost);
 
-}
-let object1 = {
-  name: 'Ivan',
-  family: 'Sinapov',
-  phone: 998,
-}
- const nasko = mqu.bind('Ivan');
-//getExercise().then((result)=>console.log(result))
+  const pageHandlerPrev = () => {
+    if (currentPage !== 1) {
+      setCurrentPage((prevState) => prevState - 1);
+    }
+    return;
+  };
+
+  const pageHandlerNext = () => {
+    if (currentPage !== exercise.length) {
+      setCurrentPage((prevState) => prevState + 1);
+    }
+    return;
+  };
+
+  const pageHandler = (number) => {
+    setCurrentPage(number);
+  };
 
   return (
     <article>
@@ -47,26 +72,32 @@ let object1 = {
         1920s following his time in America following World War I.
       </p>
 
-      <p>
-        He took inspiration from many types of exercise, including gymnastics
-        and bodybuilding, as well as Eastern disciplines of yoga, tai chi and
-        meditation, to create Pilates.
-      </p>
-
-      <h3>What is Pilates good for?</h3>
-      <p>
-        Pilates has many physical and mental benefits. It is a full body
-        exercise so targets all the major muscle groups in the body.
-      </p>
-
-      <p>
-        In fact, according to a 2010 study, two 60-minute sessions of Pilates
-        per week over 12 weeks was enough to increase abdominal endurance,
-        hamstring flexibility and upper body muscular endurance.{" "}
-      </p>
-
-      <p>When practised regularly, Pilates helps to:</p>
-      {/* {exercise ? exercise.map((x,index)=><Exercise key={x.objectId} exercise={x}/>) : ''} */}
+      <section className="Trainings">
+        {exercise ? ( exercise.length>0 ?
+          currentPosts.map((x) => (
+            <ExerciseCard
+              exercise={x}
+              key={x.objectId}
+              id={id}
+              like={() => likeHandler(x.objectId)}
+            />
+          ))
+         : 
+          <p className="TrainingsParagraph">No trainings regime yet!</p>
+        ) : <i className="fas fa-spinner fa-pulse loading"></i>}
+      </section>
+      {exercise.length>0 ? 
+      
+      <Paginate
+        posts={exercise}
+        currentPage={currentPage}
+        postsPerPage={postsPerPage}
+        pageHandler={pageHandler}
+        pageHandlerPrev={pageHandlerPrev}
+        pageHandlerNext={pageHandlerNext}
+      /> 
+      :     ''
+    }
     </article>
   );
 };

@@ -12,7 +12,7 @@ import {Home} from './Home/Home';
 import {CountContext} from './context'
 import { ShoppingCart } from './ShoppingCart/Shoppingcart';
 import { CreateRegime } from './CreateRegime/CreateRegime';
-import { Register } from './Register/Register';
+import  Register  from './Register/Register';
 import { MyProfile } from './MyProfile/MyProfile';
 
 function App() {

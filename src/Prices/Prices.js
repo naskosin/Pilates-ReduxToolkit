@@ -21,23 +21,18 @@ export const Prices = () => {
     picture: "two.jpg",
   };
 
-  
+  const quiz = {
+    name: "Nasko",
+    price: 15
+  };
 
- //const addProduct = (choice) => {
- //    //console.log(choice)
- //    if(count.some(x=>x.name===choice.name)){
- //        
- //      let newArray = count.map((x)=>{ return choice.name===x.name ? {...x, quantity: x.quantity + choice.quantity } :x})
- //      setCount(newArray)
- //      return
- //    }
-     
-      
-
-    //setCount((prevState) => [...prevState, choice]);
-    //setAmount((prevState) => [...prevState, sizes]);
-   
+  const answer ={
+    family: "Ivanov",
+    
+  }
  
+  const question = Object.assign({}, quiz, answer);
+  console.log(question)
  
   return (
     <table>

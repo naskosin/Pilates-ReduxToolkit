@@ -1,17 +1,24 @@
-.LoginForm{
+.CreateForm{
+    background-image: url('../../public/three.jpg');
+    background-size: contain;
     margin: 100px auto;
     width: 20%;
-    background-color: lightblue;
     justify-content: center;
     display: flex;
+    font-size: large;
+    font-weight: bolder;
     flex-direction: column;
     align-items: center;
-    color: azure;
+    color: white;
     padding: 30px;
     border-top-left-radius: 50px;
     border-bottom-right-radius: 50px;
 }
-.LoginForm input, label, button{
+.CreateForm input, label, button{
     padding: 5px 10px;
-    margin:7px
+    margin:7px;
+}
+
+.CreateForm input{
+   font-size: 15px;
 }

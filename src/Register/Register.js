@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
-import { authActions } from "../store";
 import { registerIn } from "../authService";
+import { Hoc } from "../Prices/HOC/HOC";
 import { useNavigate } from "react-router-dom";
 import { MyModal } from "../MyModal/MyModal";
 import "./Register.css";
 import { useState } from "react";
 
-export const Register = () => {
+ const Register = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
@@ -35,11 +35,43 @@ export const Register = () => {
         //dispatch(authActions.logErrorhandler(err));
       });
   };
+
+  const [forms, setForms]=useState({username:{dirty:false, message:'', error:''}, password:{dirty:false, message:'', error:''}});
+const onBlurTouch = (e)=>{
+ 
+    const field = e.target.name;
+    
+    const newObject = {...forms, [field]:{...field, dirty:true} }
+    console.log(newObject)
+setForms(newObject)
+};
+
+
+const reducer = ()=>{
+const object =  Object.entries(forms).reduce((acc, [field, fieldError]) => {
+  acc[field] = {
+    ...fieldError,
+    dirty: true,
+  };
+  return acc;
+}, {});
+console.log(object)
+};
+console.log(Object.entries(forms))
+reducer()
+
+
+
+
+
+
+
   return (
     <>
       <form className="LoginForm" onSubmit={registerSubmithandler}>
-        <label htmlFor="user">User</label>
-        <input id="user" name="username" />
+        <label htmlFor="user">Username</label>
+        <input id="user" name="username" onChange={onBlurTouch}/>
+        {forms.username.dirty ? <p>Touched</p>:""}
         <label htmlFor="user">Email</label>
         <input id="user" name="email" />
         <label htmlFor="password">Password</label>
@@ -55,3 +87,4 @@ export const Register = () => {
     </>
   );
 };
+export default Register;

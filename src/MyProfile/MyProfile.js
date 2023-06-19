@@ -12,11 +12,11 @@ useEffect(()=>{
 },[]);
 
 const id = useSelector((state)=>{return state.auth.user.objectId});
-console.log(id)
+//console.log(id)
  
     return(
         <section className="MyProfile">
-        {trainings ? trainings.map(x=><ExerciseCard key={x.objectId} exercise={x} id={id}/>) : <p>No trainings regime yet!</p>}
+        {trainings ? trainings.map(x=><ExerciseCard key={x.objectId} exercise={x} id={id}/>) : <p  className="TrainingsParagraph">No trainings regime yet!</p>}
         </section>
     )
 }

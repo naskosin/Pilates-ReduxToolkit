@@ -11,29 +11,29 @@ export const CreateRegime = () => {
 
     const loginSubmithandler = (e) => {
         e.preventDefault();
-        const form = new FormData(e.target);
-        const name = form.get("name");
-        const time = form.get("time");
-        const technique = form.get("technique");
+        const form = Object.fromEntries(new FormData(e.target));
+        //const name = form.get("name");
+        //const time = form.get("time");
+        //const technique = form.get("technique");
 
-        console.log("user");
+        console.log(form);
         //setShow(true);
     
-       createExercises()
-          .then((result) => {
-            console.log(result);
-            //dispatch(authActions.logInHandler(result));
-            //navigate("/trainings");
-          })
-          .catch((err) => {
-            alert(err);
-            //dispatch(authActions.logErrorhandler(err));
-          });
+       //reateExercises()
+       //  .then((result) => {
+       //    console.log(result);
+       //    //dispatch(authActions.logInHandler(result));
+       //    //navigate("/trainings");
+       //  })
+       //  .catch((err) => {
+       //    alert(err);
+       //    //dispatch(authActions.logErrorhandler(err));
+       //   });
       };
 
 
   return (
-    <form className="LoginForm" onSubmit={loginSubmithandler}>
+    <form className="CreateForm" onSubmit={loginSubmithandler}>
       <label htmlFor="name">Name</label>
       <input id="name" name="name" />
       <label htmlFor="exerTime">Required time</label>
@@ -42,6 +42,13 @@ export const CreateRegime = () => {
       <input  name="time" />
       <label htmlFor="time">Time</label>
       <input  name="time" />
+      <div>
+      <input type="radio" id="contactChoice3" name="gender" value="male"/>
+      <label for="contactChoice3">Male</label>
+      <input type="radio" id="contactChoice3" name="gender" value="female"/>
+      <label for="contactChoice3">Female</label>
+      </div>
+      
       <select name="pilates" id='selected' ref={selection} 
         defaultValue={0}
         onChange={()=>{

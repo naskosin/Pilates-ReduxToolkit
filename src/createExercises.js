@@ -36,7 +36,7 @@ export const exercises= async ()=>{
     const object=((JSON.parse(usermail)).objectId);
     const user=((JSON.parse(usermail)).username);
     const owner = {__type:"Pointer", className: "_User", objectId: object}
-    const exercise = {Name: name, Price: price, owner: owner};
+    const exercise = {Name: name, Price: price, likes:[], owner: owner};
     exercise.owner=owner;
     console.log(exercise)
     try{ 
@@ -98,3 +98,33 @@ export const exercises= async ()=>{
    }
 
    const encode = 'where{"owner": {"__type":"Pointer","className":"_User","objectId":"kzunnPFh5i"}}'
+
+   
+
+   export const updateExercise= async (id, exercise)=>{
+    try{ 
+   let res = await fetch(`https://parseapi.back4app.com/classes/Exercises/${id}`, {
+       method: 'PUT',
+       headers: {
+           'X-Parse-Application-Id':'ylfU1nxUAu75DjXZL0zErazlivOnCyxQJ5Bj13qA',
+           'X-Parse-REST-API-Key':'5M3YAfuCxTBg08iYl8K8fUzI0af3mrF7T6MPM2K7',
+           'content-type': 'applications/json',
+       },
+       body: JSON.stringify(exercise),
+
+   });
+
+   if(!res.ok){
+       console.log(res.status)
+       throw new Error(res.status)
+   }
+   let result = await res.json();
+   return result;
+   }
+   catch
+       (error){
+          console.log(error);
+           throw new Error(error)
+   }
+   
+   }

@@ -1,17 +1,102 @@
+.MyExerciseCardDiv{
+    margin: 20px auto;
+    height: 25vh;
+    width:100%;
+display: inline-block;
+    }
 .MyExerciseCard{
+
     background-color: lightblue;
-    width: 40%;
+    height: 100%;
+    width: 45%;
+    display: flex;
+    justify-content: center;
     color: black;
-    text-align: center;
-    padding: 20px;
-    margin: 10px 20px; 
-    display: inline-block;
+    margin: 20px auto;
     border-radius: 30px;
+    text-align: center;
+    padding: 5px;
 
 }
+.MyExerciseCardImageContainer{
+    width: 45%;
+    height: 100%;
+   display: inline-block;
+    padding: 0;
 
-.MyExerciseCardDiv{
+}
+.MyExerciseCardImageContainer img{
+    width: 100%;
+    display: block;
+    height: 100%;
 
-    text-align: center;
+}
+.MyExerciseCardDescription{
+    display: inline-block;
+    width: 45%;
+   vertical-align: top;
+   height: 100%;
+   padding: 0;
+    /* background-color: aqua; */
+    vertical-align: top;
+
+}
+.MyExerciseCardParagraph{
     
+    width: 90%;
+    padding: 10px;
+    text-align: right;
+    text-indent: 15px;
+
+
+}
+.MyExerciseCardSpan{
+font-weight: bolder;
+}
+.MyExerciseButtonEdit{
+    background-color: lightgreen;
+    border-radius: 30px;
+    font-size: larger;
+    padding: 5px 15px;
+    border: none;
+}
+.MyExerciseButtonDelete{
+    background-color: crimson;
+    border-radius: 30px;
+    padding: 5px 15px;
+    border: none;
+    font-size: larger;
+
+}
+.Likes{
+    color: red
+}
+
+.ExerciseEditFormButtons{
+    margin-top:220px;
+}
+.MyExerciseCardImageContainerEdit{
+    display: inline-block;
+    width: 45%;
+   vertical-align: top;
+   height: 80%;
+   
+}
+.MyExerciseCardImageContainerEdit img{
+    width: 100%;
+    display: block;
+    height: 100%;
+
+}
+.MyExerciseButtonCancel{
+    background-color: grey;
+    border-radius: 30px;
+    padding: 15px 40px;
+    border: none;
+}
+.MyExerciseButtonSave{
+    background-color: green;
+    border-radius: 30px;
+    padding: 15px 40px;
+    border: none;
 }
