@@ -1,33 +1,44 @@
-.LoginForm{
-    
-    margin: 100px auto;
-    width: 20%;
-    background-color: lightblue;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: azure;
-    padding: 30px;
-    border-top: solid 12px black;
-    border-bottom: solid 12px black;
-    border-top-left-radius: 50px;
-    border-bottom-right-radius: 50px;
+.LoginForm {
+  margin: 100px auto;
+  width: 20%;
+  background-color: lightblue;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: azure;
+  padding: 30px;
+  border-top: solid 12px black;
+  border-bottom: solid 12px black;
+  border-top-left-radius: 50px;
+  border-bottom-right-radius: 50px;
 }
-.LoginForm input, label, button{
-    padding: 5px 10px;
-    margin:7px;
+.LoginForm input,
+label,
+button {
+  padding: 8px 10px;
+  margin: 7px;
+  width: 60%;
+}
+.Incorrect {
+  border: 2px solid crimson;
+}
+.Validation {
+  padding: 5px 10px;
+  margin: 0px;
+  width: 60%;
+
+  color: crimson;
+}
+.SubmitLogin:disabled{
+    background-color:lightgrey;
+}
+.SubmitLogin{
+    border: none;
+    border-radius: 30px;
     width: 40%;
+    background-color:black;
+    color:white;
+    padding: 8px 10px;
 
-}
-.Incorrect{
-    border: 2px solid crimson;
-
-}
-.Validation{
-    padding: 5px 10px;
-    margin:0px;
-    width: 40%;
-
-    color: crimson;
 }
